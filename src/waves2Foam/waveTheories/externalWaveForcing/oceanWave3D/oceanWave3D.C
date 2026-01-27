@@ -36,7 +36,9 @@ License
 #include "zeroGradientFvPatchField.H"
 #include "fixedValueFvPatchField.H"
 #include "adjustPhi.H"
+#if OFVERSION < 110
 #include "readTimeControls.H"
+#endif
 #include "fvModels.H"
 
 // * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * //
@@ -526,19 +528,7 @@ void oceanWave3D::updatePhi()
 
     forAll (phi.boundaryField(), patchi)
     {
-#if OFPLUSBRANCH==1
-    #if OFVERSION<1706
-    	phi.boundaryField()[patchi] = phiTemp.boundaryField()[patchi];
-    #else
-    	phi.boundaryFieldRef()[patchi] = phiTemp.boundaryField()[patchi];
-    #endif
-#else
-    #if OFVERSION<300
-    	phi.boundaryField()[patchi] = phiTemp.boundaryField()[patchi];
-    #else
-    	phi.boundaryFieldRef()[patchi] = phiTemp.boundaryField()[patchi];
-    #endif
-#endif
+        phi.boundaryFieldRef()[patchi] = phiTemp.boundaryField()[patchi];
     }
 
     // Perform the correction to phi utilising the correctPhi code (foam-extend-3.1)
@@ -646,9 +636,6 @@ void oceanWave3D::updateTimeAndTimeStep()
     #if OFVERSION < 110
         #include "readTimeControls.H"
     #else
-        bool adjustTimeStep = false;
-        scalar maxCo = 0;
-        scalar maxDeltaT = 0;
         #include "createTimeControls.H"
     #endif
 #endif
