@@ -77,7 +77,7 @@ using namespace Foam;
 int main(int argc, char *argv[])
 {
 
-#   include "addTimeOptions.H"
+//#   include "addTimeOptions.H"
 #   include "setRootCase.H"
 
 #   include "createTime.H"
