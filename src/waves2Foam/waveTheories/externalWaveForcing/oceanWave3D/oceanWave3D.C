@@ -27,7 +27,10 @@ License
 #include "oceanWave3D.H"
 #include "addToRunTimeSelectionTable.H"
 
-#include "fvCFD.H"
+#include "fvm.H"
+#include "fvc.H"
+#include "surfaceFields.H"
+#include "POSIX.H"
 #include "uniformDimensionedFields.H"
 
 // * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * //
@@ -689,12 +692,12 @@ void oceanWave3D::writeExternal() const
 
 	if (!Foam::isDir(outputDir))
 	{
-		Foam::mkDir(outputDir);
+		mkDir(outputDir);
 	}
 
     // Write the OCW3D data, if the current time is an output time and the
 	// running process is the master node
-	if (Pstream::master() && rT_.outputTime())
+	if (Pstream::master() && rT_.writeTime())
     {
         // The index of the written field is based on the timeIndex in OpenFoam
 		// Consequently, it is easy to match a hot-start file for OCW3D with
