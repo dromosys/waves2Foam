@@ -372,7 +372,7 @@ void write1DFvMesh::write(bool force) const
     if
     (
         oneDFvMeshPtr_ != NULL &&
-        (mesh_.time().outputTime() || mesh_.time().timeIndex() < 1 || force)
+        (mesh_.time().writeTime() || mesh_.time().timeIndex() < 1 || force)
     )
     {
         // Control the location, where the permeable mesh is written
