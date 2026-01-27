@@ -118,7 +118,7 @@ void jensenJacobsenChristensen2014::updatePorosity()
         porosity_.ref() = poro.internalField();
     #endif
 #else
-    #if OFVERSION<400
+    #if OFVERSION<110
 	porosity_.internalField() = poro.internalField();
     #else
 	porosity_.ref() = poro.internalField();

@@ -86,7 +86,7 @@ void relaxationZone::resetTargetFields()
         (*relaxationWeightsMomentum_).ref() = 1.0;
     #endif
 #else
-    #if OFVERSION<400
+    #if OFVERSION<110
         (*relaxationWeightsMomentum_).internalField() = 1.0;
     #else
         (*relaxationWeightsMomentum_).ref() = 1.0;
@@ -105,7 +105,7 @@ void relaxationZone::resetTargetFields()
         (*relaxationWeightsSource_).ref() = 1.0;
     #endif
 #else
-    #if OFVERSION<400
+    #if OFVERSION<110
         (*relaxationWeightsSource_).internalField() = 1.0;
     #else
         (*relaxationWeightsSource_).ref() = 1.0;
@@ -124,7 +124,7 @@ void relaxationZone::resetTargetFields()
         (*targetAlpha_).ref() = 0.0;
     #endif
 #else
-    #if OFVERSION<400
+    #if OFVERSION<110
         (*targetAlpha_).internalField() = 0.0;
     #else
         (*targetAlpha_).ref() = 0.0;
@@ -143,7 +143,7 @@ void relaxationZone::resetTargetFields()
         (*targetVelocity_).ref() = vector::zero;
     #endif
 #else
-    #if OFVERSION<400
+    #if OFVERSION<110
         (*targetVelocity_).internalField() = vector::zero;
     #else
         (*targetVelocity_).ref() = vector::zero;
@@ -229,7 +229,7 @@ tmp<volScalarField> relaxationZone::numericalBeach()
         volScalarField& artificialViscosity(tartificialViscotity.ref());
     #endif
 #else
-    #if OFVERSION<400
+    #if OFVERSION<110
         volScalarField& artificialViscosity(tartificialViscotity());
     #else
         volScalarField& artificialViscosity(tartificialViscotity.ref());

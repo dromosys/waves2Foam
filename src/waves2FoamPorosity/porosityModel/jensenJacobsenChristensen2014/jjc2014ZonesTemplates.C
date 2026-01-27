@@ -60,7 +60,7 @@ Foam::jjc2014Zones::ddt
         modifyDdt(tres.ref());
     #endif
 #else
-    #if OFVERSION<400
+    #if OFVERSION<110
         modifyDdt(tres());
     #else
         modifyDdt(tres.ref());
@@ -118,7 +118,7 @@ Foam::jjc2014Zones::ddt
         modifyDdt(tres.ref());
     #endif
 #else
-    #if OFVERSION<400
+    #if OFVERSION<110
         modifyDdt(tres());
     #else
         modifyDdt(tres.ref());
@@ -147,7 +147,7 @@ Foam::jjc2014Zones::ddt
         modifyDdt(tres.ref());
     #endif
 #else
-    #if OFVERSION<400
+    #if OFVERSION<110
         modifyDdt(tres());
     #else
         modifyDdt(tres.ref());

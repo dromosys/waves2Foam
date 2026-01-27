@@ -105,7 +105,7 @@ tmp<volScalarField> Foam::jjc2014Zones::porosity() const
         volScalarField& poro(tporosity.ref());
     #endif
 #else
-    #if OFVERSION<400
+    #if OFVERSION<110
         volScalarField& poro(tporosity());
     #else
         volScalarField& poro(tporosity.ref());

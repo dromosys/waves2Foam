@@ -66,7 +66,7 @@ waveVelocityFvPatchVectorField::waveVelocityFvPatchVectorField
         convexPolyhedral(this->internalField().mesh(), true),
     #endif
 #else
-    #if OFVERSION<400
+    #if OFVERSION<110
         convexPolyhedral(this->dimensionedInternalField().mesh(), true),
     #else
         convexPolyhedral(this->internalField().mesh(), true),
@@ -120,7 +120,7 @@ waveVelocityFvPatchVectorField::waveVelocityFvPatchVectorField
         convexPolyhedral(this->internalField().mesh(), true),
     #endif
 #else
-    #if OFVERSION<400
+    #if OFVERSION<110
         convexPolyhedral(this->dimensionedInternalField().mesh(), true),
     #else
         convexPolyhedral(this->internalField().mesh(), true),
