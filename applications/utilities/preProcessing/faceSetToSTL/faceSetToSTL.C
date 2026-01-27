@@ -53,7 +53,7 @@ Author
 #endif
 
 #include "fvMesh.H"
-#include "faceTriangulation.H"
+#include "face.H"
 #include "triSurface.H"
 
 using namespace Foam;
@@ -124,13 +124,12 @@ int main(int argc, char *argv[])
 
             forAll (faces, facei)
             {
-                faceTriangulation triangulation(pp, faces[facei], true);
-
-                tfl.setSize(count + triangulation.size());
-
-                forAll (triangulation, triI)
+                labelList triLabels; faces[facei].triangles(triLabels);
+                label nTris = triLabels.size() / 3; tfl.setSize(count + nTris);
+                for (label triI = 0; triI < nTris; triI++)
                 {
-                    tfl[count++] = triangulation[triI];
+                    triFace tf(triLabels[3*triI], triLabels[3*triI+1], triLabels[3*triI+2]);
+                    tfl[count++] = tf;
                 }
             }
 
