@@ -1,3 +1,3 @@
-sampleIncidentWaveField.C
+SOURCE = sampleIncidentWaveField.C
 
 EXE = $(WAVES_APPBIN)/sampleIncidentWaveField
