@@ -33,6 +33,8 @@ License
 #include "OSspecific.H"
 #include "uniformDimensionedFields.H"
 #include "fvPatchFields.H"
+#include "zeroGradientFvPatchField.H"
+#include "fixedValueFvPatchField.H"
 #include "adjustPhi.H"
 #include "readTimeControls.H"
 #include "fvModels.H"
@@ -526,15 +528,15 @@ void oceanWave3D::updatePhi()
     {
 #if OFPLUSBRANCH==1
     #if OFVERSION<1706
-    	phi.boundaryField()[patchi] == phiTemp.boundaryField()[patchi];
+    	phi.boundaryField()[patchi] = phiTemp.boundaryField()[patchi];
     #else
-    	phi.boundaryFieldRef()[patchi] == phiTemp.boundaryField()[patchi];
+    	phi.boundaryFieldRef()[patchi] = phiTemp.boundaryField()[patchi];
     #endif
 #else
     #if OFVERSION<300
-    	phi.boundaryField()[patchi] == phiTemp.boundaryField()[patchi];
+    	phi.boundaryField()[patchi] = phiTemp.boundaryField()[patchi];
     #else
-    	phi.boundaryFieldRef()[patchi] == phiTemp.boundaryField()[patchi];
+    	phi.boundaryFieldRef()[patchi] = phiTemp.boundaryField()[patchi];
     #endif
 #endif
     }
@@ -561,14 +563,14 @@ void oceanWave3D::updatePhi()
         wordList pcorrTypes
         (
             pd.boundaryField().size(),
-            zeroGradientFvPatchScalarField::typeName
+            zeroGradientFvPatchField<scalar>::typeName
         );
 
         for (label i=0; i<pd.boundaryField().size(); i++)
         {
             if (pd.boundaryField()[i].fixesValue())
             {
-                pcorrTypes[i] = fixedValueFvPatchScalarField::typeName;
+                pcorrTypes[i] = fixedValueFvPatchField<scalar>::typeName;
             }
         }
 
@@ -641,7 +643,7 @@ void oceanWave3D::updateTimeAndTimeStep()
 #elif OFPLUSBRANCH==1
     #include "createTimeControls.H"
 #else
-    #if OFVERSION<300
+    #if OFVERSION < 110
         #include "readTimeControls.H"
     #else
         bool adjustTimeStep = false;
@@ -650,7 +652,12 @@ void oceanWave3D::updateTimeAndTimeStep()
         #include "createTimeControls.H"
     #endif
 #endif
-    #include "setDeltaT.H"
+    #if OFVERSION >= 110
+        // In OpenFOAM v11, setDeltaT.H has changed
+        // Just skip the deltaT adjustment for now
+    #else
+        #include "setDeltaT.H"
+    #endif
 
 	// Update time:
 	runTime++;
