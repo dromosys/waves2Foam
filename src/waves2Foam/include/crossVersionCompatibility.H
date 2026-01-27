@@ -38,8 +38,6 @@ Author
 #ifndef crossVersionCompatibility_H
 #define crossVersionCompatibility_H
 
-#include "fvCFD.H"
-
 // * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * //
 
 namespace Foam

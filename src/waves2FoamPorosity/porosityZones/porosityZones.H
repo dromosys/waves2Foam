@@ -40,7 +40,6 @@ SourceFiles
 #include "porosityZone.H"
 #include "IOPtrList.H"
 
-#include "fvCFD.H"
 #include "volFieldsFwd.H"
 #include "fvMatrix.H"
 #include "geometricOneField.H"

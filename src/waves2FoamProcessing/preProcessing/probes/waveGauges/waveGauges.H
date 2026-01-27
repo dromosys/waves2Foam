@@ -41,7 +41,6 @@ Author
 #define waveGauges_H
 
 #include "fvMesh.H"
-#include "fvCFD.H"
 #include "volFields.H"
 #include "IOdictionary.H"
 #include "OFstream.H"

@@ -49,7 +49,6 @@ Author
 
 #include "uniformDimensionedFields.H"
 
-#include "fvCFD.H"
 #include "volFieldsFwd.H"
 #include "fvMatrix.H"
 #include "geometricOneField.H"

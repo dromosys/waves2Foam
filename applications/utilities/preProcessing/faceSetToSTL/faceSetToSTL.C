@@ -54,6 +54,7 @@ Author
 
 #include "fvMesh.H"
 #include "face.H"
+#include "polygonTriangulate.H"
 #include "triSurface.H"
 
 using namespace Foam;
@@ -68,7 +69,6 @@ void extrudeFacesAndPoints
 int main(int argc, char *argv[])
 {
 
-#   include "addTimeOptions.H"
 #   include "setRootCase.H"
 
 #   include "createTime.H"
@@ -124,11 +124,14 @@ int main(int argc, char *argv[])
 
             forAll (faces, facei)
             {
-                labelList triLabels; faces[facei].triangles(triLabels);
-                label nTris = triLabels.size() / 3; tfl.setSize(count + nTris);
-                for (label triI = 0; triI < nTris; triI++)
+                UIndirectList<point> facePoints(pp, faces[facei]);
+                vector normal = face::area(facePoints);
+                polygonTriangulate pt;
+                const UList<triFace>& tris = pt.triangulate(facePoints, normal);
+                tfl.setSize(count + tris.size());
+                forAll (tris, triI)
                 {
-                    triFace tf(triLabels[3*triI], triLabels[3*triI+1], triLabels[3*triI+2]);
+                    triFace tf(faces[facei][tris[triI][0]], faces[facei][tris[triI][1]], faces[facei][tris[triI][2]]);
                     tfl[count++] = tf;
                 }
             }

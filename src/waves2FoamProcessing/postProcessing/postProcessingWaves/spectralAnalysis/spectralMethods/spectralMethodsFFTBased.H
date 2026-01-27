@@ -40,7 +40,6 @@ Author
 #ifndef spectralMethodsFFTBased_H
 #define spectralMethodsFFTBased_H
 
-#include "fvCFD.H"
 #include "complexExp.H"
 
 #include <math.h>

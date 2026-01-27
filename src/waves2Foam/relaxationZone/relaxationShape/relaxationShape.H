@@ -55,7 +55,6 @@ Author
 #ifndef relaxationShape_H
 #define relaxationShape_H
 
-#include "fvCFD.H"
 #include "volFields.H"
 
 #include "IOdictionary.H"

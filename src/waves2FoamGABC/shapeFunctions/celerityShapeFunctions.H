@@ -41,7 +41,6 @@ Author
 #define celerityShapeFunctions_H
 
 #include "fvMesh.H"
-#include "fvCFD.H"
 
 #include "autoPtr.H"
 #include "runTimeSelectionTables.H"

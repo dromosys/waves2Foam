@@ -41,7 +41,6 @@ Author
 #ifndef spectralMethodsLeastSquaresBased_H
 #define spectralMethodsLeastSquaresBased_H
 
-#include "fvCFD.H"
 #include "complexExp.H"
 
 #if EXTBRANCH==1
