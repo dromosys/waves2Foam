@@ -12,6 +12,8 @@ then
     cp ./bin/bashrc.org ./bin/bashrc
     chmod a+x ./bin/bashrc
 fi
+## Source OpenFOAM environment
+. /opt/openfoam11/etc/bashrc
 
 ## Set environmental variables
 . ./bin/bashrc
