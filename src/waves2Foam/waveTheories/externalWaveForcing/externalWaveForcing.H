@@ -49,7 +49,7 @@ Author
 #include "runTimeSelectionTables.H"
 
 #include "uniformDimensionedFields.H"
-#include "../../lnInclude/crossVersionCompatibility.H"
+#include "crossVersionCompatibility.H"
 
 // * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * //
 
