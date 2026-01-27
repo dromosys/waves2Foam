@@ -30,7 +30,7 @@ License
 #include "fvm.H"
 #include "fvc.H"
 #include "surfaceFields.H"
-#include "POSIX.H"
+#include "OSspecific.H"
 #include "uniformDimensionedFields.H"
 #include "fvPatchFields.H"
 #include "adjustPhi.H"
@@ -701,7 +701,7 @@ void oceanWave3D::writeExternal() const
 		outputDir = rT_.path()/"OCW3Dhotstart/";
 	}
 
-	if (!isDir(outputDir))
+	if (!Foam::isDir(outputDir))
 	{
 		mkDir(outputDir);
 	}
