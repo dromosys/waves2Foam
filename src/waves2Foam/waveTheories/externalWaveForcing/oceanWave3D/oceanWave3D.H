@@ -43,7 +43,7 @@ Author
 #include "externalWaveForcing.H"
 #include "relaxationShape.H"
 
-#include "crossVersionCompatibility.H"
+#include <crossVersionCompatibility.H>
 #include "setWaveField.H"
 
 // * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * //
