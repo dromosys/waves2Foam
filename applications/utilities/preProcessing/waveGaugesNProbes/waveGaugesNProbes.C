@@ -40,7 +40,9 @@ Author
 #include "argList.H"
 
 #if EXTBRANCH==1
-    #if 310<OFVERSION
+    #if OFVERSION >= 1000
+        #include "Time.H"
+    #elif 310<OFVERSION
         #include "foamTime.H"
     #else
         #include "Time.H"
