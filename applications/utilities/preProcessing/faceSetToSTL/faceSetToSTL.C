@@ -40,19 +40,7 @@ Author
 
 #include "argList.H"
 
-#if EXTBRANCH==1
-    #if OFVERSION >= 1000
-        #include "Time.H"
-    #elif 310<OFVERSION
-        #include "foamTime.H"
-    #else
-        #include "Time.H"
-    #endif
-#elif OFPLUSBRANCH==1
-    #include "Time.H"
-#else
-    #include "Time.H"
-#endif
+#include "Time.H"
 
 #include "fvMesh.H"
 #include "face.H"
