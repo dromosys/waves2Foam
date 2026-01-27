@@ -518,7 +518,7 @@ void oceanWave3D::updatePhi()
         phi.ref() = phiTemp.internalField();
     #endif
 #else
-    #if OFVERSION<400
+    #if OFVERSION<110
         phi.internalField() = phiTemp.internalField();
     #else
         phi.ref() = phiTemp.internalField();
