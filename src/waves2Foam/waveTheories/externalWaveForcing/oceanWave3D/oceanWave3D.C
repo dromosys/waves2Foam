@@ -32,6 +32,10 @@ License
 #include "surfaceFields.H"
 #include "POSIX.H"
 #include "uniformDimensionedFields.H"
+#include "fvPatchFields.H"
+#include "adjustPhi.H"
+#include "readTimeControls.H"
+#include "fvModels.H"
 
 // * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * //
 
@@ -527,14 +531,18 @@ void oceanWave3D::updatePhi()
     	phi.boundaryFieldRef()[patchi] == phiTemp.boundaryField()[patchi];
     #endif
 #else
-  	phi.boundaryField()[patchi] == phiTemp.boundaryField()[patchi];
+    #if OFVERSION<300
+    	phi.boundaryField()[patchi] == phiTemp.boundaryField()[patchi];
+    #else
+    	phi.boundaryFieldRef()[patchi] == phiTemp.boundaryField()[patchi];
+    #endif
 #endif
     }
 
     // Perform the correction to phi utilising the correctPhi code (foam-extend-3.1)
     {
     	// Get the controls
-    	dictionary pimple = mesh_.solutionDict().subDict("PIMPLE");
+    	dictionary pimple = rT_.controlDict().subDict("PIMPLE");
 
  	    int nNonOrthCorr =
    	        pimple.lookupOrDefault<int>("nNonOrthogonalCorrectors", 0);
@@ -636,6 +644,9 @@ void oceanWave3D::updateTimeAndTimeStep()
     #if OFVERSION<300
         #include "readTimeControls.H"
     #else
+        bool adjustTimeStep = false;
+        scalar maxCo = 0;
+        scalar maxDeltaT = 0;
         #include "createTimeControls.H"
     #endif
 #endif
@@ -690,7 +701,7 @@ void oceanWave3D::writeExternal() const
 		outputDir = rT_.path()/"OCW3Dhotstart/";
 	}
 
-	if (!Foam::isDir(outputDir))
+	if (!isDir(outputDir))
 	{
 		mkDir(outputDir);
 	}
