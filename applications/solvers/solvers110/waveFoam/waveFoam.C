@@ -37,7 +37,6 @@ Description
 
 \*---------------------------------------------------------------------------*/
 
-#include "fvCFD.H"
 #include "CMULES.H"
 #include "EulerDdtScheme.H"
 #include "localEulerDdtScheme.H"
