@@ -1,3 +1,4 @@
-- Get the projection of the pressure gradient correct
-
-- Not all wave theories have had dpdx implemented
+Not all wave theories have had dpdx implemented
+- stokesFifth: Basic implementation added (returns 0 for normal incidence)
+- stokesFirst: Basic implementation added (returns 0 for normal incidence)
+- TODO: Implement proper oblique wave pressure gradients

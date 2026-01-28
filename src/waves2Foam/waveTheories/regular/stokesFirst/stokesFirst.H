@@ -135,12 +135,12 @@ public:
             const scalar&
         ) const;
 
-//        virtual scalar ddxPd
-//        (
-//            const point&,
-//            const scalar&,
-//            const vector&
-//        ) const;
+        virtual scalar ddxPd
+        (
+            const point&,
+            const scalar&,
+            const vector&
+        ) const;
 
         virtual scalar pExcess
         (

@@ -1,22 +1,22 @@
 EXE_INC = \
-    -DOFVERSION=$(WM_PROJECT_VERSION_NUMBER) \
-    -DEXTBRANCH=$(EXTBRANCH) \
-    -DXVERSION=$(WAVES_XVERSION) \
-    -DOFPLUSBRANCH=$(OFPLUSBRANCH) \
-    -I$(LIB_SRC)/finiteVolume/lnInclude \
-    -I$(LIB_SRC)/meshTools/lnInclude \
-    -I$(LIB_SRC)/sampling/lnInclude \
-    -I$(LIB_SRC)/lagrangian/basic/lnInclude \
-    -I$(WAVES_GSL_INCLUDE)
-    
+    -DOFVERSION=110 \
+    -DEXTBRANCH=0 \
+    -DXVERSION=0 \
+    -DOFPLUSBRANCH=0 \
+    -I/opt/openfoam11/src/finiteVolume/lnInclude \
+    -I/opt/openfoam11/src/meshTools/lnInclude \
+    -I/opt/openfoam11/src/sampling/lnInclude \
+    -I/opt/openfoam11/src/lagrangian/basic/lnInclude \
+    -I/usr/include
+
 LIB_LIBS = \
     -lfiniteVolume \
     -lmeshTools \
     -lsampling \
     -lstdc++ \
     -lgfortran \
-    -L$(WAVES_LIBBIN) \
+    -L/home/openfoam/platforms/linux64GccDPInt32Opt/lib \
     -lOceanWave3D \
-    -L$(WAVES_GSL_LIB) \
+    -L/usr/lib64 \
     -lgsl \
     -lgslcblas

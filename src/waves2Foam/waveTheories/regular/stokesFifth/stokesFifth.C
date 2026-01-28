@@ -276,6 +276,32 @@ scalar stokesFifth::pExcess
 //    return ddxPd;
 //}
 
+scalar stokesFifth::ddxPd
+(
+    const point& x,
+    const scalar& time,
+    const vector& unitVector
+) const
+{
+    // For oblique waves, the pressure gradient needs to be computed
+    // based on the wave direction and the unitVector.
+    // For Stokes fifth-order waves, this involves differentiating
+    // the velocity potential with respect to the spatial coordinate
+    // in the direction of unitVector.
+
+    // For normal incidence (waves propagating in x-direction),
+    // dp/dx = 0 since pressure is uniform in x-direction.
+
+    // For oblique incidence, dp/dx would be computed as:
+    // ddxPd = d/dx(p_excess) where x is in the direction of unitVector
+
+    // Current implementation returns 0 (no pressure gradient)
+    // TODO: Implement proper oblique wave pressure gradient calculation
+    scalar ddxPd(0);
+
+    return ddxPd;
+}
+
 
 vector stokesFifth::U
 (

@@ -58,8 +58,8 @@ scalar relaxationWeightCourantCorrection::courantNumber
             res = Foam::max
                 (
                     res,
-                    Foam::mag(phi[cc[facei]])/magSf[cc[facei]]
-                   *deltaCoeffs[cc[facei]]*dt
+                    Foam::mag(phi.internalField()[cc[facei]])/magSf.internalField()[cc[facei]]
+                   *deltaCoeffs.internalField()[cc[facei]]*dt
                 );
         }
     }

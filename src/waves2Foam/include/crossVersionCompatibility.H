@@ -38,6 +38,11 @@ Author
 #ifndef crossVersionCompatibility_H
 #define crossVersionCompatibility_H
 
+#include "word.H"
+#include "scalar.H"
+#include "label.H"
+#include "Switch.H"
+
 // * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * //
 
 namespace Foam

@@ -142,7 +142,7 @@ public:
         {
             return tmp<fvPatchField<vector> >
             (
-                new waveVelocityFvPatchVectorField(*this)
+                new waveVelocityFvPatchVectorField(*this, this->internalField())
             );
         }
 

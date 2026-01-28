@@ -86,7 +86,7 @@ waveVelocityFvPatchVectorField::waveVelocityFvPatchVectorField
             this->internalField().mesh()
     #endif
 #else
-    #if OFVERSION<400
+    #if OFVERSION<110
             this->dimensionedInternalField().mesh()
     #else
             this->internalField().mesh()
@@ -148,7 +148,7 @@ waveVelocityFvPatchVectorField::waveVelocityFvPatchVectorField
         convexPolyhedral(this->internalField().mesh(), true),
     #endif
 #else
-    #if OFVERSION<400
+    #if OFVERSION<110
         convexPolyhedral(this->dimensionedInternalField().mesh(), true),
     #else
         convexPolyhedral(this->internalField().mesh(), true),
@@ -168,7 +168,7 @@ waveVelocityFvPatchVectorField::waveVelocityFvPatchVectorField
             this->internalField().mesh()
     #endif
 #else
-    #if OFVERSION<400
+    #if OFVERSION<110
             this->dimensionedInternalField().mesh()
     #else
             this->internalField().mesh()
@@ -197,7 +197,7 @@ waveVelocityFvPatchVectorField::waveVelocityFvPatchVectorField
         convexPolyhedral(this->internalField().mesh(), true),
     #endif
 #else
-    #if OFVERSION<400
+    #if OFVERSION<110
         convexPolyhedral(this->dimensionedInternalField().mesh(), true),
     #else
         convexPolyhedral(this->internalField().mesh(), true),
@@ -217,7 +217,7 @@ waveVelocityFvPatchVectorField::waveVelocityFvPatchVectorField
             this->internalField().mesh()
     #endif
 #else
-    #if OFVERSION<400
+    #if OFVERSION<110
             this->dimensionedInternalField().mesh()
     #else
             this->internalField().mesh()
@@ -273,7 +273,7 @@ void waveVelocityFvPatchVectorField::updateCoeffs()
         const fvMesh& mesh = this->internalField().mesh();
     #endif
 #else
-    #if OFVERSION<400
+    #if OFVERSION<110
         const fvMesh& mesh = this->dimensionedInternalField().mesh();
     #else
         const fvMesh& mesh = this->internalField().mesh();
@@ -335,10 +335,10 @@ void waveVelocityFvPatchVectorField::evaluate()
 void waveVelocityFvPatchVectorField::write(Ostream& os) const
 {
     fvPatchField<vector>::write(os);
-    this->refValue().writeEntry("refValue", os);
-    this->refGrad().writeEntry("refGradient", os);
-    this->valueFraction().writeEntry("valueFraction", os);
-    this->writeEntry("value", os);
+    writeEntry(os, "refValue", this->refValue());
+    writeEntry(os, "refGradient", this->refGrad());
+    writeEntry(os, "valueFraction", this->valueFraction());
+    writeEntry(os, "value", *this);
 }
 
 

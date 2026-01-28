@@ -43,7 +43,6 @@ Author
 #define relaxationShapeLine_H
 
 #include "relaxationShapeRectangular.H"
-#include "interpolateXY.H"
 
 // * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * //
 

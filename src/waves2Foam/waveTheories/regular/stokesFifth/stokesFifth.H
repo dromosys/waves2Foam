@@ -186,6 +186,13 @@ public:
 //            const vector&
 //        ) const;
 
+        virtual scalar ddxPd
+        (
+            const point&,
+            const scalar&,
+            const vector&
+        ) const;
+
         virtual vector U
         (
             const point&,

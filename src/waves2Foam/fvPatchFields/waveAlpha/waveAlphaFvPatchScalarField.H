@@ -140,7 +140,7 @@ public:
         {
             return tmp<fvPatchField<scalar> >
             (
-                new waveAlphaFvPatchScalarField(*this)
+                new waveAlphaFvPatchScalarField(*this, this->internalField())
             );
         }
 

@@ -45,7 +45,8 @@ Author
 #define relaxationWeightCourantCorrection_H
 
 #include "fvMesh.H"
-//#include "volFields.H"
+#include "volFields.H"
+#include "surfaceFields.H"
 
 #include "IOdictionary.H"
 
