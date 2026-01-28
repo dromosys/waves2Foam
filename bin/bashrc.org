@@ -17,8 +17,8 @@ mkdir -p $WM_PROJECT_USER_DIR/applications/utilities/
 mkdir -p $FOAM_USER_APPBIN
 mkdir -p $FOAM_USER_LIBBIN
 export WAVES_DIR=/home/openfoam/OpenFOAMCases/waves2Foam
-export WAVES_APPBIN=/home/openfoam/platforms/linux64GccDPInt32Opt/bin
-export WAVES_LIBBIN=/home/openfoam/platforms/linux64GccDPInt32Opt/lib
+export WAVES_APPBIN=/home/openfoam/platforms/linux64GccDPOpt/bin
+export WAVES_LIBBIN=/home/openfoam/platforms/linux64GccDPOpt/lib
 
 export WAVES_GSL_INCLUDE=/usr/include
 export WAVES_GSL_LIB=/usr/lib64
