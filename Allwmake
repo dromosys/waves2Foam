@@ -13,7 +13,7 @@ then
     chmod a+x ./bin/bashrc
 fi
 ## Source OpenFOAM environment
-. /opt/openfoam11/etc/bashrc
+. /opt/openfoam13/etc/bashrc
 
 ## Set environmental variables
 . ./bin/bashrc
