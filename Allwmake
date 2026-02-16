@@ -13,7 +13,11 @@ then
     chmod a+x ./bin/bashrc
 fi
 ## Source OpenFOAM environment
-. /opt/openfoam11/etc/bashrc
+if [ -n "$WM_PROJECT_DIR" ]; then
+    . "$WM_PROJECT_DIR"/etc/bashrc
+else
+    . /opt/openfoam11/etc/bashrc
+fi
 
 ## Set environmental variables
 . ./bin/bashrc

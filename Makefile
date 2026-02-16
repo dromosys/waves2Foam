@@ -14,5 +14,16 @@ build: init
 	export FOAM_USER_LIBBIN=/home/openfoam/platforms/linux64GccDPInt32Opt/lib ; 
 	export PATH=/opt/openfoam11/bin:/opt/openfoam11/wmake:/opt/openfoam11/platforms/linux64GccDPInt32Opt/bin:/home/openfoam/platforms/linux64GccDPInt32Opt/bin:/opt/openfoam11/platforms/linux64GccDPInt32Opt/lib:$$PATH ;
 	
-	./Allwmake 
-	
+	./Allwmake
+
+clean:
+	./Allwclean
+
+rebuild: clean
+	./Allwmake
+
+docker-build-30:
+	docker build -t openfoam-waves2foam-30 .
+
+docker-run-30:
+	docker run --rm -it -v $(CURDIR):/home/openfoam/OpenFOAMCases/waves2Foam openfoam-waves2foam-30 /bin/bash
